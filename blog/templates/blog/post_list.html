@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Post List</title>
+    {% load staticfiles %}
+    <link href="https://fonts.googleapis.com/css?family=Yeon+Sung&display=swap" rel="stylesheet">
+    <style>
+    .Box{
+        width: 400px; height: auto;
+        border: 1px solid lightgray;
+        border-radius: 5px;
+        display: inline-block;
+        margin-left: 50px;
+        margin-bottom: 20px;
+    }
+    img{
+        width: 380px; height: 380px;
+        margin: auto; display: block;
+    }
+    #title{
+        font-family: 'Yeon Sung', cursive;
+        font-size: 100px;
+        color: purple;
+        text-align: center;
+    }
+    #title_small{
+        font-size: 20px;
+        color: gray;
+    }
+    .box_title{
+        font-family: 'Yeon Sung', cursive;
+        color: navy;
+        font-size: 25px;
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .label{
+        font-family: 'Yeon Sung', cursive;
+        color: navy;
+    }
+    #information{
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+    </style>
+
+</head>
+<body>
+
+<div id="contents">
+    <h1 id="title">Blog <span id="title_small">made with Django</span></h1>
+    {% for post in object_list %}
+    <div class="Box">
+        <p class="box_title">{{ post }}</p>
+        <div class="imgbox">
+            <img src="{{ post.image.url }}">
+        </div>
+
+        <div id="information">
+            <p class="description"><span class="label">Description: </span> {{ post.description }}</p>
+            <p><span class="label">Create Date: </span> {{ post.create_date }}</p>
+            <p><span class="label">Modify Date: </span> {{ post.modify_date }}</p>
+        </div>
+
+    </div>
+    {% endfor %}
+</div>
+
+</body>
+</html>
